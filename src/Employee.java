@@ -69,6 +69,26 @@ public class Employee {
 			return 0;
 		}
 	}
+	public int totalWageLimited(int noOfDays, int noOfHours) {
+		if (noOfDays < 0 || noOfDays > 20){
+			System.out.println("Invalid No of days");
+			return 0;
+		}
+		else if(noOfHours < 0 || noOfHours > 8) {
+			System.out.println("Invalid Hours per day");
+			return 0;
+		}
+		else {
+			int totalHoursWorked = noOfDays * noOfHours;
+			if(totalHoursWorked > 100) {
+				totalHoursWorked = 100;
+			}
+			return 20 * totalHoursWorked;
+			
+		}
+		
+		
+	}
 	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Employee Wage Computation");
@@ -90,7 +110,7 @@ public class Employee {
 		System.out.println("Enter no of hours worked per day");
 		noOfHours = scanner.nextInt();
 		System.out.println("Total Montly Wage: "+ e1.totalMontlyWage(noOfDays, noOfHours));
-		
+		System.out.println("Total Montly Wage Limited Upto 20 days and 100 hours: "+ e1.totalWageLimited(noOfDays, noOfHours));
 		
 		
 	}
