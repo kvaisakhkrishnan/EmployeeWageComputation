@@ -60,6 +60,15 @@ public class Employee {
 		}
 		return partTimeWage;
 	}
+	public int totalMontlyWage(int noOfDays, int noOfHours) {
+		if(noOfDays > 0 && noOfDays <= 20) {
+			return noOfDays * this.fullDayWage(noOfHours);
+		}
+		else {
+			System.out.println("Invalid No of days");
+			return 0;
+		}
+	}
 	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Employee Wage Computation");
@@ -75,6 +84,12 @@ public class Employee {
 		System.out.println("Enter no of part time hours worked");
 		int noOfHours = scanner.nextInt();
 		System.out.println("Part Time Wage is : "+ e1.partTimeWage(noOfHours));
+		
+		System.out.println("Enter no of days worked: ");
+		int noOfDays = scanner.nextInt();
+		System.out.println("Enter no of hours worked per day");
+		noOfHours = scanner.nextInt();
+		System.out.println("Total Montly Wage: "+ e1.totalMontlyWage(noOfDays, noOfHours));
 		
 		
 		
