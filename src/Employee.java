@@ -9,22 +9,56 @@ public class Employee {
 		return true;
 	}
 	public int fullDayWage(int hoursWorked) {
-		if(hoursWorked > 0 && hoursWorked <= 8) {
-			return hoursWorked * 20;
+		int dailyWage = 0;
+		switch(hoursWorked) {
+		case 1:
+			dailyWage = 1 * 20;
+			break;
+		case 2:
+			dailyWage = 2 * 20;
+			break;
+		case 3:
+			dailyWage = 3 * 20;
+			break;
+		case 4:
+			dailyWage = 4 * 20;
+			break;
+		case 5:
+			dailyWage = 5 * 20;
+			break;
+		case 6:
+			dailyWage = 6 * 20;
+			break;
+		case 7:
+			dailyWage = 7 * 20;
+			break;
+		case 8:
+			dailyWage = 8 * 20;
+			break;
+		default :
+			System.out.println("Invalid Hours Worked");
 		}
-		else {
-			System.out.println("Invalid Hours Worked Value");
-			return 0;
-		}
+		return dailyWage;
 	}
 	public int partTimeWage(int hoursWorked) {
-		if(hoursWorked > 0 && hoursWorked <= 4) {
-			return hoursWorked * 20;
+		int partTimeWage = 0;
+		switch(hoursWorked) {
+		case 1:
+			partTimeWage = 1 * 20;
+			break;
+		case 2:
+			partTimeWage = 2 * 20;
+			break;
+		case 3:
+			partTimeWage = 3 * 20;
+			break;
+		case 4:
+			partTimeWage = 4 * 20;
+			break;
+		default :
+			System.out.println("Invalid Hours Worked");
 		}
-		else {
-			System.out.println("Invalid Hours Worked Value");
-			return 0;
-		}
+		return partTimeWage;
 	}
 	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
