@@ -17,6 +17,15 @@ public class Employee {
 			return 0;
 		}
 	}
+	public int partTimeWage(int hoursWorked) {
+		if(hoursWorked > 0 && hoursWorked <= 4) {
+			return hoursWorked * 20;
+		}
+		else {
+			System.out.println("Invalid Hours Worked Value");
+			return 0;
+		}
+	}
 	public static void main(String args[]) {
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Welcome to Employee Wage Computation");
@@ -28,6 +37,12 @@ public class Employee {
 			int noOfHours = scanner.nextInt();
 			System.out.println("Daily Wage is : "+ e1.fullDayWage(noOfHours));
 		}
+		Employee e2 = new Employee();
+		System.out.println("Enter no of part time hours worked");
+		int noOfHours = scanner.nextInt();
+		System.out.println("Part Time Wage is : "+ e1.partTimeWage(noOfHours));
+		
+		
 		
 	}
 }
