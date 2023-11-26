@@ -1,5 +1,5 @@
 import java.util.*;
-public class Company {
+public class Company implements EmployeeWageBuilder{
 	private int fullTimeWage;
 	private int partTimeWage;
 	private int fullTimeWorkingHours;
@@ -15,12 +15,16 @@ public class Company {
 	}
 
 
-	private Employee employee;
-	public Employee getEmployee() {
+
+	private ArrayList<Employee> employee;
+	public ArrayList<Employee> getEmployee() {
 		return employee;
 	}
 
-	public void setEmployee(Employee employee) {
+	public void addEmployee(Employee employee) {
+		this.employee.add(employee);
+	}
+	public void setEmployee(ArrayList<Employee> employee) {
 		this.employee = employee;
 	}
 
@@ -65,19 +69,19 @@ public class Company {
 	}
 
 	
-	public Company(int fullTimeWage, int partTimeWage, int fullTimeWorkingHours, int partTimeWorkingHours, int noOfDays, int noOfHours, Employee employee){
+	public Company(int fullTimeWage, int partTimeWage, int fullTimeWorkingHours, int partTimeWorkingHours, int noOfDays, int noOfHours){
 		this.fullTimeWage = fullTimeWage;
 		this.partTimeWage = partTimeWage;
 		this.fullTimeWorkingHours = fullTimeWorkingHours;
 		this.partTimeWorkingHours = partTimeWorkingHours;
 		this.noOfDays = noOfDays;
 		this.noOfHours = noOfHours;
-		this.employee = employee;
+		this.employee = new ArrayList<Employee>();
 	}
 	
 	
 
-	void wageComputation() {
+	public int wageComputation(Employee employee) {
 		Scanner scanner = new Scanner(System.in);
 		boolean checkAttendance = employee.checkAttendance();
 		System.out.println("Employee Attendance: "+checkAttendance);
@@ -97,6 +101,15 @@ public class Company {
 		noOfHours = scanner.nextInt();
 		System.out.println("Total Montly Wage: "+ employee.totalMontlyWage(noOfDays, noOfHours, this.noOfDays, this.fullTimeWage, this.partTimeWage, this.fullTimeWorkingHours, this.partTimeWorkingHours));
 		System.out.println("Total Montly Wage Limited Upto 20 days and 100 hours: "+ employee.totalWageLimited(noOfDays, noOfHours, this.noOfDays, this.fullTimeWage, this.partTimeWage, this.fullTimeWorkingHours, this.partTimeWorkingHours));
+		return employee.totalMontlyWage(noOfDays, noOfHours, this.noOfDays, this.fullTimeWage, this.partTimeWage, this.fullTimeWorkingHours, this.partTimeWorkingHours);
+	}
+	
+	public void totalWage() {
+		int totalWage = 0;
+		for(int i = 0; i < this.employee.size(); i++) {
+			totalWage += this.wageComputation(this.employee.get(i));
+		}
+		System.out.println("Total Wage of company is : "+totalWage);
 	}
 	
 	

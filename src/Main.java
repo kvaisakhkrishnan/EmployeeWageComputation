@@ -15,8 +15,12 @@ public class Main {
 		int workingdays = scanner.nextInt();
 		System.out.println("Enter No of Working Hours Total: ");
 		int workinghours = scanner.nextInt();
+		Company company = new Company(fullTimeWage, partTimeWage, fullTimeHours, partTimeHours, workingdays, workinghours);
 		Employee e1 = new Employee();
-		Company company = new Company(fullTimeWage, partTimeWage, fullTimeHours, partTimeHours, workingdays, workinghours, e1);
-		company.wageComputation();	
+		company.addEmployee(e1);
+		Employee e2 = new Employee();
+		company.addEmployee(e2);
+		company.wageComputation(e1);
+		company.totalWage();
 	}
 }
